@@ -1,0 +1,26 @@
+name: Skill distribution
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.1.0
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v7.1.0
+        with:
+          python-version: '3.x'
+      - name: Lint the distribution test
+        run: shellcheck tests/distribution.sh
+      - name: Install into a disposable project and verify every skill
+        run: bash tests/distribution.sh

@@ -10,4 +10,4 @@ This repository holds personal agent skills and related customizations. Keep eac
 - Keep public examples synthetic. Do not copy private PR bodies, internal links, or personal records into this repository.
 - Preserve explicit user instructions and existing authorization. A skill does not authorize unrelated actions or sending messages.
 
-No application test suite or linter is configured yet. Validate skill metadata and relative links, run the documented behavioral scenarios, and check `git diff --check` for documentation changes.
+For distribution changes or new skills, run `bash tests/distribution.sh` and `shellcheck tests/distribution.sh`. The check installs into temporary project directories, never user skill directories. Keep the tested skills-CLI version aligned between the test and installation docs. Validate skill metadata and relative links, run relevant behavioral scenarios, and check `git diff --check` for documentation changes.
