@@ -1,0 +1,4 @@
+interface:
+  display_name: "Create PR"
+  short_description: "Write pull requests in Rob’s practical voice"
+  default_prompt: "Use $create-pr to prepare a pull request from the current branch in my writing style."
