@@ -2,6 +2,12 @@
 
 My personal agent skills, harness customizations, and experiments, for development and everyday life. Previously named `agent-dev-stack`.
 
+## Personal guidance
+
+[`guidance/personal.md`](guidance/personal.md) is the portable source for my personal preferences. Keep harness-specific adapters separate from this baseline. Skills remain under `skills/`; future lifecycle hooks and supporting scripts belong in this same repository, with harness-specific behavior isolated.
+
+See [guidance delivery](docs/guidance-delivery.md) for the current manual native-file route, the approved reconciliation decisions, and the remaining one-day delivery and verification plan. The skills installer below distributes skills; it does not install personal guidance.
+
 ## Skills
 
 - [`skills/development/create-pr`](skills/development/create-pr/SKILL.md): prepare, create, or update a pull request in my writing style, with consistent formatting and accurate validation notes.
