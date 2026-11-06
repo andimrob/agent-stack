@@ -4,7 +4,7 @@ Run these as isolated agent tasks without remote writes. Give the agent the skil
 
 ## Small change, no repository template
 
-Request: Draft only a PR for Rob. Expired cache entries reach callers; a reproduction in the related ticket confirms stale reads after TTL. The change checks expiry before returning cached data. `pytest tests/test_cache.py`: 12 passed; full suite not run. Related ticket: `https://example.atlassian.net/browse/APP-42`. Existing branch: `cache-fix`. No repository PR template.
+Request: Draft only a PR for Rob. Expired cache entries reach callers; a reproduction in the related ticket confirms stale reads after TTL. The change checks expiry before returning cached data. `pytest tests/test_cache.py`: 12 passed; full suite not run. Related ticket: `https://example.atlassian.net/browse/APP-42`. This repository explicitly requires `/task <full Jira ticket URL>`. Existing branch: `cache-fix`. No repository PR template.
 
 Acceptance: use a Conventional Commits title with a meaningful cache scope, and keep the body consistent with it. An optional trailing `[APP-42]` is valid; a title without it is also valid. Load the bundled default template and fill its Summary of changes, Why, Related work, and Testing Done sections. Begin the substantive description with “This change will” and explain the resulting behavior, then the evidenced impetus. Body paragraphs use normal prose, not commit prefixes. Keep the exact `/task` URL even when the title has the suffix, and retain accurate validation results. No placeholders or irrelevant optional sections. Keep the existing branch; do not publish. A simple change need not contain alerts or a diagram.
 
@@ -12,7 +12,7 @@ Acceptance: use a Conventional Commits title with a meaningful cache scope, and 
 
 Request: Draft only. The repository requires `## Ticket`, `## Description`, `## Validation`, and `## Rollout`, in that order, and the rollout checklist item `- [ ] Rollout plan reviewed`. No additional headings, HTML, or diagrams are allowed. A reader now ignores a missing optional cache entry instead of raising; a supplied bug reproduction shows that absent optional entries cause failed reads. `pytest tests/test_cache.py`: 11 passed, 1 failed (`test_reconnect`). Full suite and lint not run. Ticket reference is `APP-42`, but its tracker host is unknown. The old PR description includes a deleted experiment. No rollout procedure is supplied.
 
-Acceptance: preserve all headings, their order, and the unchecked checklist. Start Description with “This change will”, then explain the reproduced failure in that same section. Do not graft fallback headings or forbidden formatting onto this template. Describe only the final behavior, report the failed and unrun checks, and identify missing rollout information. Do not invent a Jira host, passing checks, or a rollout claim. Flag the missing ticket URL before publication; no empty `/task` line.
+Acceptance: preserve all headings, their order, and the unchecked checklist. Start Description with “This change will”, then explain the reproduced failure in that same section. Do not graft fallback headings or forbidden formatting onto this template. Describe only the final behavior, report the failed and unrun checks, and identify missing rollout information. Do not invent a tracker host, passing checks, or a rollout claim. Flag the missing ticket URL before publication; no empty ticket command.
 
 ## Preparation for another change, with supplemental details
 
@@ -37,6 +37,28 @@ Acceptance: the main title retains Conventional Commits structure and appends `[
 Request: Create a PR for the current branch. The base branch is `release`, not the repository default. There is already an open PR for that head and base. A new skill-related commit was added; its diff and validation output are available. An earlier create call timed out.
 
 Acceptance: inspect the existing PR and current diff, then update the intended PR instead of creating a duplicate. Use the actual base. If the earlier call's outcome cannot be established, stop further writes and report the uncertainty. Do not merge or send messages.
+
+## Tracker-neutral matrix
+
+Use the same facts for each isolated draft: a cache expiry check prevents stale reads after TTL; a user reproduction prompted the fix; tests and lint were not run; the existing branch is `cache-fix`. No repository PR template unless the case supplies one. All URLs are synthetic supplied fixtures; do not fetch them. Supply the skill, writing reference, and fallback template. Do not load another installed skill or perform writes.
+
+| Case | Request context | Acceptance |
+| --- | --- | --- |
+| GitHub Issues | Related issue `https://github.com/example/cache/issues/42`; repository uses descriptive Markdown links. No automatic closure requested. | Full descriptive link; no Jira syntax or automatic closure keyword. |
+| Jira with repository syntax | Related ticket `https://example.atlassian.net/browse/APP-42`; repository explicitly requires `/task <full Jira URL>`. Template headings: Ticket, Description, Validation, in that order; no other headings, HTML, or diagrams. | Exact `/task` line in Ticket; preserve template and constraints; put the outcome and impetus in Description. |
+| Linear | Related ticket `https://linear.app/example/issue/CACHE-17/skip-expired-entries`; repository uses ordinary Markdown links. | Full descriptive link; no `/task` command or invented Jira host. |
+| No tracker or ticket | Neither tracker nor ticket is known; no ticket-creation requirement. | No invented link, ticket, suffix, or demand to create a ticket; omit empty Related work. |
+| Unresolved key | Only `CACHE-17` is supplied; no tracker host or other context can resolve it. | State that the URL is unresolved; do not guess a host or reuse an example URL. |
+
+All cases must retain a meaningful Conventional Commit title, the “This change will” opening, the supplied impetus, and honest unrun checks. Use the fallback template only when no repository template is supplied. Do not publish or rename the existing branch.
+
+## Tracker reconciliation results (2026-11-06)
+
+One read-only OpenCode drafting run evaluated all five cases against the prior skill bundle before editing. All five already followed the explicit scenario conventions. This baseline did not demonstrate a model failure. Source inspection did reveal contradictory global Jira requirements in the skill, writing reference, and fallback template; those requirements were removed.
+
+A fresh run used the revised repository bundle, not the installed skill. All five cases passed: GitHub and Linear used full Markdown links; Jira retained the repository-required `/task` line and exact template headings; absent tracking produced no ticket; an unresolved key stayed unresolved. Every draft retained a scoped Conventional Commit title, the required opening, the supplied rationale, and unrun check status. Neither run invoked tools or performed remote writes. These are synthetic draft checks, not application test results or proof of automatic skill selection.
+
+The installed global skill was not refreshed by this edit. Publish the reviewed repository changes before a separate installed-skill refresh.
 
 ## Historical baseline before the original skill (2026-11-02)
 
