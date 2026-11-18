@@ -5,6 +5,7 @@ My personal agent skills, harness customizations, and experiments, for developme
 ## Skills
 
 - [`skills/development/create-pr`](skills/development/create-pr/SKILL.md): prepare, create, or update a pull request in my writing style, with consistent formatting and accurate validation notes.
+- [`skills/development/council-review`](skills/development/council-review/SKILL.md): review a pull request with a council of eight expert reviewers who deliberate and vote; only findings every member agrees on are reported for posting, ranked by severity.
 - [`skills/life`](skills/life/README.md): space for everyday-life skills as they are added.
 
 Each skill lives in `skills/<category>/<skill-name>/` and has its own `SKILL.md`. Category directories are organizational; they are not skills themselves.

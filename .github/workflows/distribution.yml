@@ -20,6 +20,8 @@ jobs:
       - uses: actions/setup-python@v7.1.0
         with:
           python-version: '3.x'
+      - name: Check skill structure
+        run: python3 -m unittest discover -s tests
       - name: Lint the distribution test
         run: shellcheck tests/distribution.sh
       - name: Install into a disposable project and verify every skill
