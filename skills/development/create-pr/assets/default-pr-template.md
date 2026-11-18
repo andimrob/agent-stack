@@ -20,10 +20,12 @@ Link real supporting issues, designs, or code evidence when available. -->
 
 ## Related work
 
-<!-- Include each related Jira ticket on its own line as /task <full Jira URL>.
-Add relevant prerequisite/follow-up PR or design links when known. If a related
-ticket's full URL is unresolved, flag that instead of guessing or emitting an
-empty /task line. Remove this section if there is no related work. -->
+<!-- Include full links to related issues or tickets in the repository's documented
+tracker format; use descriptive Markdown links when no special format is required.
+Use /task <full Jira URL> only when repository instructions require it. Add known
+prerequisite/follow-up PR or design links. Flag unresolved URLs without guessing.
+Do not invent tickets or require ticket creation. Remove this section if there is
+no related work. -->
 
 ## Testing Done
 
